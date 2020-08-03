@@ -1,6 +1,340 @@
 define({ "api": [
   {
     "type": "get",
+    "url": "/auth",
+    "title": "Login",
+    "description": "<p>Logs an user in to receive an access token.</p>",
+    "group": "Authentication",
+    "name": "Login",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>User's name.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<p>User's password.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "access_token",
+            "description": "<p>Access token of the user's session.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "access_token.value",
+            "description": "<p>Value of the token.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Long",
+            "optional": false,
+            "field": "access_token.expiry",
+            "description": "<p>Expiration in milliseconds of the token.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "session_hash",
+            "description": "<p>Hash of the user's session.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "session_hash.value",
+            "description": "<p>Hash value of the user's session.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Long",
+            "optional": false,
+            "field": "session_hash.expiry",
+            "description": "<p>Expiry of the user's session in millis.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"status\": {\n        \"code\": 200,\n        \"message\": \"OK\"\n    },\n    \"data\": {\n        \"access_token\": {\n            \"value\": \"3DoVTH2m76VakD7Q\",\n            \"expiry\": 1596475596000\n        },\n        \"session_hash\": {\n            \"value\": \"3DoVTH2m76VakD7Q\",\n            \"expiry\": 1596475596000\n        },\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "1.0.0",
+    "filename": "api/src/endpoints/v1/authEndpoint.php",
+    "groupTitle": "Authentication",
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "\\",
+            "description": "<p>&quot;database unavailable&quot; Cannot connect to database to retrieve data.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n    \"status\": {\n        \"code\": 400,\n        \"message\": \"...\"\n    },\n    \"data\": []\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
+    "url": "/auth/refresh",
+    "title": "Login with session",
+    "description": "<p>Logs an user in using its session hash.</p>",
+    "group": "Authentication",
+    "name": "Login_with_session",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "session_hash",
+            "description": "<p>User's session hash.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "access_token",
+            "description": "<p>Access token of the user's session.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "access_token.value",
+            "description": "<p>Value of the token.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Long",
+            "optional": false,
+            "field": "access_token.expiry",
+            "description": "<p>Expiration in milliseconds of the token.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "session_hash",
+            "description": "<p>Hash of the user's session.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "session_hash.value",
+            "description": "<p>Hash value of the user's session.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Long",
+            "optional": false,
+            "field": "session_hash.expiry",
+            "description": "<p>Expiry of the user's session in millis.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"status\": {\n        \"code\": 200,\n        \"message\": \"OK\"\n    },\n    \"data\": {\n        \"access_token\": {\n            \"value\": \"3DoVTH2m76VakD7Q\",\n            \"expiry\": 1596475596000\n        },\n        \"session_hash\": {\n            \"value\": \"3DoVTH2m76VakD7Q\",\n            \"expiry\": 1596475596000\n        },\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "1.0.0",
+    "filename": "api/src/endpoints/v1/authEndpoint.php",
+    "groupTitle": "Authentication",
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "\\",
+            "description": "<p>&quot;database unavailable&quot; Cannot connect to database to retrieve data.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n    \"status\": {\n        \"code\": 400,\n        \"message\": \"...\"\n    },\n    \"data\": []\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
+    "url": "/auth/refresh",
+    "title": "Logout a session",
+    "description": "<p>Logs an user out using its session hash.</p>",
+    "group": "Authentication",
+    "name": "Logout_a_session",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "session_hash",
+            "description": "<p>User's session hash.</p>"
+          }
+        ]
+      }
+    },
+    "version": "1.0.0",
+    "filename": "api/src/endpoints/v1/authEndpoint.php",
+    "groupTitle": "Authentication",
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "\\",
+            "description": "<p>&quot;database unavailable&quot; Cannot connect to database to retrieve data.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n    \"status\": {\n        \"code\": 400,\n        \"message\": \"...\"\n    },\n    \"data\": []\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"status\": {\n        \"code\": 200,\n        \"message\": \"OK\"\n    },\n    \"data\": []\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "post",
+    "url": "/group",
+    "title": "Create Group",
+    "description": "<p>Creates new group with given information</p>",
+    "group": "Group",
+    "name": "Create_Group",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Group's name (min: 3; max: 16).</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "displayname",
+            "description": "<p>Group's displayname (min: 3; max: 16).</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Json-Array",
+            "optional": false,
+            "field": "permissions",
+            "description": "<p>Group's permissions.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "\\",
+            "description": "<p>&quot;invalid json format for permissions&quot; The json format provided by <code>permissions</code> is invalid.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n    \"status\": {\n        \"code\": 400,\n        \"message\": \"...\"\n    },\n    \"data\": []\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>User's unique access-token (Bearer).</p>"
+          }
+        ]
+      }
+    },
+    "version": "1.0.0",
+    "filename": "api/src/endpoints/v1/groupEndpoint.php",
+    "groupTitle": "Group",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"status\": {\n        \"code\": 200,\n        \"message\": \"OK\"\n    },\n    \"data\": []\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
     "url": "/install",
     "title": "First-time setup",
     "description": "<p>Initiates first-time setup. If finished successfully the endpoint will get deleted.</p>",
@@ -10,6 +344,16 @@ define({ "api": [
     "filename": "api/src/endpoints/v1/installEndpoint.php",
     "groupTitle": "Setup",
     "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "\\",
+            "description": "<p>&quot;database unavailable&quot; Cannot connect to database to retrieve data.</p>"
+          }
+        ]
+      },
       "examples": [
         {
           "title": "Error-Response:",
@@ -46,11 +390,21 @@ define({ "api": [
         ]
       }
     },
-    "success": {
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "\\",
+            "description": "<p>&quot;failed to get default group&quot; The default group couldnt be found in the database.</p>"
+          }
+        ]
+      },
       "examples": [
         {
-          "title": "Success-Response:",
-          "content": "{\n    \"status\": {\n        \"code\": 200,\n        \"message\": \"OK\"\n    }\n}",
+          "title": "Error-Response:",
+          "content": "{\n    \"status\": {\n        \"code\": 400,\n        \"message\": \"...\"\n    },\n    \"data\": []\n}",
           "type": "json"
         }
       ]
@@ -71,7 +425,47 @@ define({ "api": [
     "version": "1.0.0",
     "filename": "api/src/endpoints/v1/userEndpoint.php",
     "groupTitle": "User",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"status\": {\n        \"code\": 200,\n        \"message\": \"OK\"\n    },\n    \"data\": []\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "delete",
+    "url": "/user",
+    "title": "Delete user",
+    "description": "<p>Delete a user matching the given id</p>",
+    "group": "User",
+    "name": "Delete_user",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>User's id.</p>"
+          }
+        ]
+      }
+    },
     "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "\\",
+            "description": "<p>&quot;not found&quot; The user was not found.</p>"
+          }
+        ]
+      },
       "examples": [
         {
           "title": "Error-Response:",
@@ -79,7 +473,95 @@ define({ "api": [
           "type": "json"
         }
       ]
+    },
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>User's unique access-token (Bearer).</p>"
+          }
+        ]
+      }
+    },
+    "version": "1.0.0",
+    "filename": "api/src/endpoints/v1/userEndpoint.php",
+    "groupTitle": "User",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"status\": {\n        \"code\": 200,\n        \"message\": \"OK\"\n    },\n    \"data\": []\n}",
+          "type": "json"
+        }
+      ]
     }
+  },
+  {
+    "type": "get",
+    "url": "/user/:id",
+    "title": "Get all",
+    "description": "<p>Requests all existing users in database.</p>",
+    "group": "User",
+    "name": "Get_all",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "data",
+            "description": "<p>Object containing profiles.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"status\": {\n        \"code\": 200,\n        \"message\": \"OK\"\n    },\n    \"data\": [\n        {...},\n        {...}, ...\n    ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "\\",
+            "description": "<p>&quot;not found&quot; There are no users in the database.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n    \"status\": {\n        \"code\": 400,\n        \"message\": \"...\"\n    },\n    \"data\": []\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>User's unique access-token (Bearer).</p>"
+          }
+        ]
+      }
+    },
+    "version": "1.0.0",
+    "filename": "api/src/endpoints/v1/userEndpoint.php",
+    "groupTitle": "User"
   },
   {
     "type": "get",
@@ -136,6 +618,25 @@ define({ "api": [
         }
       ]
     },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "\\",
+            "description": "<p>&quot;not found&quot; The user was not found.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n    \"status\": {\n        \"code\": 400,\n        \"message\": \"...\"\n    },\n    \"data\": []\n}",
+          "type": "json"
+        }
+      ]
+    },
     "header": {
       "fields": {
         "Header": [
@@ -151,16 +652,7 @@ define({ "api": [
     },
     "version": "1.0.0",
     "filename": "api/src/endpoints/v1/userEndpoint.php",
-    "groupTitle": "User",
-    "error": {
-      "examples": [
-        {
-          "title": "Error-Response:",
-          "content": "{\n    \"status\": {\n        \"code\": 400,\n        \"message\": \"...\"\n    },\n    \"data\": []\n}",
-          "type": "json"
-        }
-      ]
-    }
+    "groupTitle": "User"
   },
   {
     "type": "get",
@@ -230,6 +722,95 @@ define({ "api": [
         }
       ]
     },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "\\",
+            "description": "<p>&quot;not found&quot; The user was not found.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n    \"status\": {\n        \"code\": 400,\n        \"message\": \"...\"\n    },\n    \"data\": []\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>User's unique access-token (Bearer).</p>"
+          }
+        ]
+      }
+    },
+    "version": "1.0.0",
+    "filename": "api/src/endpoints/v1/userEndpoint.php",
+    "groupTitle": "User"
+  },
+  {
+    "type": "put",
+    "url": "/user",
+    "title": "Update user",
+    "description": "<p>Update a user matching the given id</p>",
+    "group": "User",
+    "name": "Update_user",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>User's id.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>User's updated name (optional).</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "group",
+            "description": "<p>User's updated group (optional).</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "\\",
+            "description": "<p>&quot;not found&quot; The user was not found.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n    \"status\": {\n        \"code\": 400,\n        \"message\": \"...\"\n    },\n    \"data\": []\n}",
+          "type": "json"
+        }
+      ]
+    },
     "header": {
       "fields": {
         "Header": [
@@ -246,11 +827,11 @@ define({ "api": [
     "version": "1.0.0",
     "filename": "api/src/endpoints/v1/userEndpoint.php",
     "groupTitle": "User",
-    "error": {
+    "success": {
       "examples": [
         {
-          "title": "Error-Response:",
-          "content": "{\n    \"status\": {\n        \"code\": 400,\n        \"message\": \"...\"\n    },\n    \"data\": []\n}",
+          "title": "Success-Response:",
+          "content": "{\n    \"status\": {\n        \"code\": 200,\n        \"message\": \"OK\"\n    },\n    \"data\": []\n}",
           "type": "json"
         }
       ]
