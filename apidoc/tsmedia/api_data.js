@@ -90,8 +90,62 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "\\",
-            "description": "<p>&quot;database unavailable&quot; Cannot connect to database to retrieve data.</p>"
+            "field": "database_unavailable",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "missing_required_params",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_access_token",
+            "description": "<p>No access token provided or expired.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authentication_required",
+            "description": "<p>Authorization is required to access endpoint.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authorization_header_required",
+            "description": "<p>Authorization is required to access endpoint but no header was sent.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_endpoint",
+            "description": "<p>This endpoint does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_api_version",
+            "description": "<p>The requested version does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "unrecognized_action",
+            "description": "<p>The action for an endpoint is not supported.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "no_permission",
+            "description": "<p>Not enough permission to access endpoint</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "input_invalid:_[...]",
+            "description": "<p>Input for that parameter is invalid or does not match the requirements</p>"
           }
         ]
       },
@@ -188,8 +242,62 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "\\",
-            "description": "<p>&quot;database unavailable&quot; Cannot connect to database to retrieve data.</p>"
+            "field": "database_unavailable",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "missing_required_params",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_access_token",
+            "description": "<p>No access token provided or expired.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authentication_required",
+            "description": "<p>Authorization is required to access endpoint.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authorization_header_required",
+            "description": "<p>Authorization is required to access endpoint but no header was sent.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_endpoint",
+            "description": "<p>This endpoint does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_api_version",
+            "description": "<p>The requested version does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "unrecognized_action",
+            "description": "<p>The action for an endpoint is not supported.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "no_permission",
+            "description": "<p>Not enough permission to access endpoint</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "input_invalid:_[...]",
+            "description": "<p>Input for that parameter is invalid or does not match the requirements</p>"
           }
         ]
       },
@@ -231,8 +339,62 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "\\",
-            "description": "<p>&quot;database unavailable&quot; Cannot connect to database to retrieve data.</p>"
+            "field": "database_unavailable",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "missing_required_params",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_access_token",
+            "description": "<p>No access token provided or expired.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authentication_required",
+            "description": "<p>Authorization is required to access endpoint.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authorization_header_required",
+            "description": "<p>Authorization is required to access endpoint but no header was sent.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_endpoint",
+            "description": "<p>This endpoint does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_api_version",
+            "description": "<p>The requested version does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "unrecognized_action",
+            "description": "<p>The action for an endpoint is not supported.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "no_permission",
+            "description": "<p>Not enough permission to access endpoint</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "input_invalid:_[...]",
+            "description": "<p>Input for that parameter is invalid or does not match the requirements</p>"
           }
         ]
       },
@@ -294,8 +456,662 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "\\",
-            "description": "<p>&quot;invalid json format for permissions&quot; The json format provided by <code>permissions</code> is invalid.</p>"
+            "field": "invalid_json_format_for_permissions",
+            "description": "<p>The json format provided by <code>permissions</code> is invalid.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "input_invalid:_[PARAMETER_NAME]",
+            "description": "<p>The format of the provided parameter is invalid.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "name_already_exists",
+            "description": "<p>The provided name already exists in the database.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "group_not_created",
+            "description": "<p>The group was not created because of an database error.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "database_unavailable",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "missing_required_params",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_access_token",
+            "description": "<p>No access token provided or expired.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authentication_required",
+            "description": "<p>Authorization is required to access endpoint.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authorization_header_required",
+            "description": "<p>Authorization is required to access endpoint but no header was sent.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_endpoint",
+            "description": "<p>This endpoint does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_api_version",
+            "description": "<p>The requested version does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "unrecognized_action",
+            "description": "<p>The action for an endpoint is not supported.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "no_permission",
+            "description": "<p>Not enough permission to access endpoint</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "input_invalid:_[...]",
+            "description": "<p>Input for that parameter is invalid or does not match the requirements</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n    \"status\": {\n        \"code\": 400,\n        \"message\": \"...\"\n    },\n    \"data\": []\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>User's unique access-token (Bearer).</p>"
+          }
+        ]
+      }
+    },
+    "version": "1.0.0",
+    "filename": "api/src/endpoints/v1/groupEndpoint.php",
+    "groupTitle": "Group",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"status\": {\n        \"code\": 200,\n        \"message\": \"OK\"\n    },\n    \"data\": []\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "delete",
+    "url": "/group/:id",
+    "title": "Delete group",
+    "description": "<p>Delete a group matching the given id</p>",
+    "group": "Group",
+    "name": "Delete_group",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Group's id.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "not_found",
+            "description": "<p>The group was not found.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "not_deleted",
+            "description": "<p>The group was not deleted because of a database error.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "database_unavailable",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "missing_required_params",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_access_token",
+            "description": "<p>No access token provided or expired.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authentication_required",
+            "description": "<p>Authorization is required to access endpoint.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authorization_header_required",
+            "description": "<p>Authorization is required to access endpoint but no header was sent.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_endpoint",
+            "description": "<p>This endpoint does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_api_version",
+            "description": "<p>The requested version does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "unrecognized_action",
+            "description": "<p>The action for an endpoint is not supported.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "no_permission",
+            "description": "<p>Not enough permission to access endpoint</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "input_invalid:_[...]",
+            "description": "<p>Input for that parameter is invalid or does not match the requirements</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n    \"status\": {\n        \"code\": 400,\n        \"message\": \"...\"\n    },\n    \"data\": []\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>User's unique access-token (Bearer).</p>"
+          }
+        ]
+      }
+    },
+    "version": "1.0.0",
+    "filename": "api/src/endpoints/v1/groupEndpoint.php",
+    "groupTitle": "Group",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"status\": {\n        \"code\": 200,\n        \"message\": \"OK\"\n    },\n    \"data\": []\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
+    "url": "/group/all",
+    "title": "Get all",
+    "description": "<p>Requests all existing groups in database.</p>",
+    "group": "Group",
+    "name": "Get_all",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "data",
+            "description": "<p>Object containing groups.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"status\": {\n        \"code\": 200,\n        \"message\": \"OK\"\n    },\n    \"data\": [\n        {...},\n        {...}, ...\n    ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "not_found",
+            "description": "<p>There are no groups in the database.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "database_unavailable",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "missing_required_params",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_access_token",
+            "description": "<p>No access token provided or expired.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authentication_required",
+            "description": "<p>Authorization is required to access endpoint.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authorization_header_required",
+            "description": "<p>Authorization is required to access endpoint but no header was sent.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_endpoint",
+            "description": "<p>This endpoint does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_api_version",
+            "description": "<p>The requested version does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "unrecognized_action",
+            "description": "<p>The action for an endpoint is not supported.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "no_permission",
+            "description": "<p>Not enough permission to access endpoint</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "input_invalid:_[...]",
+            "description": "<p>Input for that parameter is invalid or does not match the requirements</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n    \"status\": {\n        \"code\": 400,\n        \"message\": \"...\"\n    },\n    \"data\": []\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>User's unique access-token (Bearer).</p>"
+          }
+        ]
+      }
+    },
+    "version": "1.0.0",
+    "filename": "api/src/endpoints/v1/groupEndpoint.php",
+    "groupTitle": "Group"
+  },
+  {
+    "type": "get",
+    "url": "/group/:id",
+    "title": "Get group by ID",
+    "description": "<p>Requests group data with matching id.</p>",
+    "group": "Group",
+    "name": "Get_group_by_ID",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID of requested group.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "data",
+            "description": "<p>Object containing group info.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.id",
+            "description": "<p>UUID of group.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.name",
+            "description": "<p>Name of group.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.displayname",
+            "description": "<p>Displayname of group.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String[]",
+            "optional": false,
+            "field": "data.permissions",
+            "description": "<p>Permissions of group.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"status\": {\n        \"code\": 200,\n        \"message\": \"OK\"\n    },\n    \"data\": {\n        \"id\": \"aa337788-ab51-4476-91e5-c7d07d98ca1c\",\n        \"name\": \"default\",\n        \"displayname\": \"default\",\n        \"permissions\": []\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "not_found",
+            "description": "<p>The group was not found.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "database_unavailable",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "missing_required_params",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_access_token",
+            "description": "<p>No access token provided or expired.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authentication_required",
+            "description": "<p>Authorization is required to access endpoint.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authorization_header_required",
+            "description": "<p>Authorization is required to access endpoint but no header was sent.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_endpoint",
+            "description": "<p>This endpoint does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_api_version",
+            "description": "<p>The requested version does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "unrecognized_action",
+            "description": "<p>The action for an endpoint is not supported.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "no_permission",
+            "description": "<p>Not enough permission to access endpoint</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "input_invalid:_[...]",
+            "description": "<p>Input for that parameter is invalid or does not match the requirements</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n    \"status\": {\n        \"code\": 400,\n        \"message\": \"...\"\n    },\n    \"data\": []\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>User's unique access-token (Bearer).</p>"
+          }
+        ]
+      }
+    },
+    "version": "1.0.0",
+    "filename": "api/src/endpoints/v1/groupEndpoint.php",
+    "groupTitle": "Group"
+  },
+  {
+    "type": "put",
+    "url": "/group/:id",
+    "title": "Update group",
+    "description": "<p>Update a group matching the given id</p>",
+    "group": "Group",
+    "name": "Update_group",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Group's id.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Group's updated name (optional).</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "displayname",
+            "description": "<p>Group's updated displayname (optional).</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "permissions",
+            "description": "<p>Group's updated permissions (optional).</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "not_found",
+            "description": "<p>The group was not found.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "nothing_to_update",
+            "description": "<p>No parameters were specified to update.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "not_updated",
+            "description": "<p>The group was not updated because of a database error.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "database_unavailable",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "missing_required_params",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_access_token",
+            "description": "<p>No access token provided or expired.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authentication_required",
+            "description": "<p>Authorization is required to access endpoint.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authorization_header_required",
+            "description": "<p>Authorization is required to access endpoint but no header was sent.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_endpoint",
+            "description": "<p>This endpoint does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_api_version",
+            "description": "<p>The requested version does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "unrecognized_action",
+            "description": "<p>The action for an endpoint is not supported.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "no_permission",
+            "description": "<p>Not enough permission to access endpoint</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "input_invalid:_[...]",
+            "description": "<p>Input for that parameter is invalid or does not match the requirements</p>"
           }
         ]
       },
@@ -349,8 +1165,62 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "\\",
-            "description": "<p>&quot;database unavailable&quot; Cannot connect to database to retrieve data.</p>"
+            "field": "database_unavailable",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "missing_required_params",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_access_token",
+            "description": "<p>No access token provided or expired.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authentication_required",
+            "description": "<p>Authorization is required to access endpoint.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authorization_header_required",
+            "description": "<p>Authorization is required to access endpoint but no header was sent.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_endpoint",
+            "description": "<p>This endpoint does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_api_version",
+            "description": "<p>The requested version does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "unrecognized_action",
+            "description": "<p>The action for an endpoint is not supported.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "no_permission",
+            "description": "<p>Not enough permission to access endpoint</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "input_invalid:_[...]",
+            "description": "<p>Input for that parameter is invalid or does not match the requirements</p>"
           }
         ]
       },
@@ -396,8 +1266,86 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "\\",
-            "description": "<p>&quot;failed to get default group&quot; The default group couldnt be found in the database.</p>"
+            "field": "failed_to_get_default_group",
+            "description": "<p>The default group couldnt be found in the database.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "group_not_found",
+            "description": "<p>The provided group does not exist.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "name_already_exists",
+            "description": "<p>The provided username does already exist.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "not_created",
+            "description": "<p>The user was not created because of an database error.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "database_unavailable",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "missing_required_params",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_access_token",
+            "description": "<p>No access token provided or expired.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authentication_required",
+            "description": "<p>Authorization is required to access endpoint.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authorization_header_required",
+            "description": "<p>Authorization is required to access endpoint but no header was sent.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_endpoint",
+            "description": "<p>This endpoint does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_api_version",
+            "description": "<p>The requested version does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "unrecognized_action",
+            "description": "<p>The action for an endpoint is not supported.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "no_permission",
+            "description": "<p>Not enough permission to access endpoint</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "input_invalid:_[...]",
+            "description": "<p>Input for that parameter is invalid or does not match the requirements</p>"
           }
         ]
       },
@@ -461,8 +1409,74 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "\\",
-            "description": "<p>&quot;not found&quot; The user was not found.</p>"
+            "field": "not_found",
+            "description": "<p>The user was not found.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "not_deleted",
+            "description": "<p>The user was not deleted because of a database error.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "database_unavailable",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "missing_required_params",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_access_token",
+            "description": "<p>No access token provided or expired.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authentication_required",
+            "description": "<p>Authorization is required to access endpoint.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authorization_header_required",
+            "description": "<p>Authorization is required to access endpoint but no header was sent.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_endpoint",
+            "description": "<p>This endpoint does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_api_version",
+            "description": "<p>The requested version does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "unrecognized_action",
+            "description": "<p>The action for an endpoint is not supported.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "no_permission",
+            "description": "<p>Not enough permission to access endpoint</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "input_invalid:_[...]",
+            "description": "<p>Input for that parameter is invalid or does not match the requirements</p>"
           }
         ]
       },
@@ -502,7 +1516,7 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/user/:id",
+    "url": "/user/all",
     "title": "Get all",
     "description": "<p>Requests all existing users in database.</p>",
     "group": "User",
@@ -533,8 +1547,68 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "\\",
-            "description": "<p>&quot;not found&quot; There are no users in the database.</p>"
+            "field": "not_found",
+            "description": "<p>There are no users in the database.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "database_unavailable",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "missing_required_params",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_access_token",
+            "description": "<p>No access token provided or expired.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authentication_required",
+            "description": "<p>Authorization is required to access endpoint.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authorization_header_required",
+            "description": "<p>Authorization is required to access endpoint but no header was sent.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_endpoint",
+            "description": "<p>This endpoint does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_api_version",
+            "description": "<p>The requested version does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "unrecognized_action",
+            "description": "<p>The action for an endpoint is not supported.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "no_permission",
+            "description": "<p>Not enough permission to access endpoint</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "input_invalid:_[...]",
+            "description": "<p>Input for that parameter is invalid or does not match the requirements</p>"
           }
         ]
       },
@@ -624,8 +1698,68 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "\\",
-            "description": "<p>&quot;not found&quot; The user was not found.</p>"
+            "field": "not_found",
+            "description": "<p>The user was not found.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "database_unavailable",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "missing_required_params",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_access_token",
+            "description": "<p>No access token provided or expired.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authentication_required",
+            "description": "<p>Authorization is required to access endpoint.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authorization_header_required",
+            "description": "<p>Authorization is required to access endpoint but no header was sent.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_endpoint",
+            "description": "<p>This endpoint does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_api_version",
+            "description": "<p>The requested version does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "unrecognized_action",
+            "description": "<p>The action for an endpoint is not supported.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "no_permission",
+            "description": "<p>Not enough permission to access endpoint</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "input_invalid:_[...]",
+            "description": "<p>Input for that parameter is invalid or does not match the requirements</p>"
           }
         ]
       },
@@ -728,8 +1862,68 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "\\",
-            "description": "<p>&quot;not found&quot; The user was not found.</p>"
+            "field": "not_found",
+            "description": "<p>The user was not found.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "database_unavailable",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "missing_required_params",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_access_token",
+            "description": "<p>No access token provided or expired.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authentication_required",
+            "description": "<p>Authorization is required to access endpoint.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authorization_header_required",
+            "description": "<p>Authorization is required to access endpoint but no header was sent.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_endpoint",
+            "description": "<p>This endpoint does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_api_version",
+            "description": "<p>The requested version does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "unrecognized_action",
+            "description": "<p>The action for an endpoint is not supported.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "no_permission",
+            "description": "<p>Not enough permission to access endpoint</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "input_invalid:_[...]",
+            "description": "<p>Input for that parameter is invalid or does not match the requirements</p>"
           }
         ]
       },
@@ -760,7 +1954,7 @@ define({ "api": [
   },
   {
     "type": "put",
-    "url": "/user",
+    "url": "/user/:id",
     "title": "Update user",
     "description": "<p>Update a user matching the given id</p>",
     "group": "User",
@@ -798,8 +1992,80 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "\\",
-            "description": "<p>&quot;not found&quot; The user was not found.</p>"
+            "field": "not_found",
+            "description": "<p>The user was not found.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "nothing_to_update",
+            "description": "<p>No parameters were specified to update.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "not_updated",
+            "description": "<p>The user was not updated because of a database error.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "database_unavailable",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "missing_required_params",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_access_token",
+            "description": "<p>No access token provided or expired.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authentication_required",
+            "description": "<p>Authorization is required to access endpoint.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authorization_header_required",
+            "description": "<p>Authorization is required to access endpoint but no header was sent.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_endpoint",
+            "description": "<p>This endpoint does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_api_version",
+            "description": "<p>The requested version does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "unrecognized_action",
+            "description": "<p>The action for an endpoint is not supported.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "no_permission",
+            "description": "<p>Not enough permission to access endpoint</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "input_invalid:_[...]",
+            "description": "<p>Input for that parameter is invalid or does not match the requirements</p>"
           }
         ]
       },
