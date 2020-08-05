@@ -144,8 +144,8 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "input_invalid:_[...]",
-            "description": "<p>Input for that parameter is invalid or does not match the requirements</p>"
+            "field": "input_invalid:_[PARAMETER_NAME]",
+            "description": "<p>Input for that parameter <code>[PARAMETER_NAME]</code> is invalid or does not match the requirements</p>"
           }
         ]
       },
@@ -296,8 +296,8 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "input_invalid:_[...]",
-            "description": "<p>Input for that parameter is invalid or does not match the requirements</p>"
+            "field": "input_invalid:_[PARAMETER_NAME]",
+            "description": "<p>Input for that parameter <code>[PARAMETER_NAME]</code> is invalid or does not match the requirements</p>"
           }
         ]
       },
@@ -312,11 +312,11 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/auth/refresh",
-    "title": "Logout a session",
-    "description": "<p>Logs an user out using its session hash.</p>",
+    "url": "/auth/?session_hash=...",
+    "title": "Logout",
+    "description": "<p>Logs an user out.</p>",
     "group": "Authentication",
-    "name": "Logout_a_session",
+    "name": "Logout",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -393,8 +393,8 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "input_invalid:_[...]",
-            "description": "<p>Input for that parameter is invalid or does not match the requirements</p>"
+            "field": "input_invalid:_[PARAMETER_NAME]",
+            "description": "<p>Input for that parameter <code>[PARAMETER_NAME]</code> is invalid or does not match the requirements</p>"
           }
         ]
       },
@@ -446,6 +446,13 @@ define({ "api": [
             "optional": false,
             "field": "permissions",
             "description": "<p>Group's permissions.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Int",
+            "optional": false,
+            "field": "hierarchy",
+            "description": "<p>Group's permissions (optional) (min: 0; max: 1000).</p>"
           }
         ]
       }
@@ -458,12 +465,6 @@ define({ "api": [
             "optional": false,
             "field": "invalid_json_format_for_permissions",
             "description": "<p>The json format provided by <code>permissions</code> is invalid.</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "input_invalid:_[PARAMETER_NAME]",
-            "description": "<p>The format of the provided parameter is invalid.</p>"
           },
           {
             "group": "Error 4xx",
@@ -534,8 +535,8 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "input_invalid:_[...]",
-            "description": "<p>Input for that parameter is invalid or does not match the requirements</p>"
+            "field": "input_invalid:_[PARAMETER_NAME]",
+            "description": "<p>Input for that parameter <code>[PARAMETER_NAME]</code> is invalid or does not match the requirements</p>"
           }
         ]
       },
@@ -561,6 +562,11 @@ define({ "api": [
       }
     },
     "version": "1.0.0",
+    "permission": [
+      {
+        "name": "permission.groups.create"
+      }
+    ],
     "filename": "api/src/endpoints/v1/groupEndpoint.php",
     "groupTitle": "Group",
     "success": {
@@ -665,8 +671,8 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "input_invalid:_[...]",
-            "description": "<p>Input for that parameter is invalid or does not match the requirements</p>"
+            "field": "input_invalid:_[PARAMETER_NAME]",
+            "description": "<p>Input for that parameter <code>[PARAMETER_NAME]</code> is invalid or does not match the requirements</p>"
           }
         ]
       },
@@ -692,6 +698,11 @@ define({ "api": [
       }
     },
     "version": "1.0.0",
+    "permission": [
+      {
+        "name": "permission.groups.delete"
+      }
+    ],
     "filename": "api/src/endpoints/v1/groupEndpoint.php",
     "groupTitle": "Group",
     "success": {
@@ -797,8 +808,8 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "input_invalid:_[...]",
-            "description": "<p>Input for that parameter is invalid or does not match the requirements</p>"
+            "field": "input_invalid:_[PARAMETER_NAME]",
+            "description": "<p>Input for that parameter <code>[PARAMETER_NAME]</code> is invalid or does not match the requirements</p>"
           }
         ]
       },
@@ -824,6 +835,11 @@ define({ "api": [
       }
     },
     "version": "1.0.0",
+    "permission": [
+      {
+        "name": "permission.groups"
+      }
+    ],
     "filename": "api/src/endpoints/v1/groupEndpoint.php",
     "groupTitle": "Group"
   },
@@ -961,8 +977,8 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "input_invalid:_[...]",
-            "description": "<p>Input for that parameter is invalid or does not match the requirements</p>"
+            "field": "input_invalid:_[PARAMETER_NAME]",
+            "description": "<p>Input for that parameter <code>[PARAMETER_NAME]</code> is invalid or does not match the requirements</p>"
           }
         ]
       },
@@ -988,6 +1004,11 @@ define({ "api": [
       }
     },
     "version": "1.0.0",
+    "permission": [
+      {
+        "name": "permission.groups"
+      }
+    ],
     "filename": "api/src/endpoints/v1/groupEndpoint.php",
     "groupTitle": "Group"
   },
@@ -1028,6 +1049,13 @@ define({ "api": [
             "optional": false,
             "field": "permissions",
             "description": "<p>Group's updated permissions (optional).</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "hierarchy",
+            "description": "<p>Group's updated permissions (optional).</p>"
           }
         ]
       }
@@ -1040,6 +1068,18 @@ define({ "api": [
             "optional": false,
             "field": "not_found",
             "description": "<p>The group was not found.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "cannot_updated_default",
+            "description": "<p>The group cannot be updated, because it is the default group.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "name_exists",
+            "description": "<p>The group name already exists.</p>"
           },
           {
             "group": "Error 4xx",
@@ -1110,8 +1150,8 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "input_invalid:_[...]",
-            "description": "<p>Input for that parameter is invalid or does not match the requirements</p>"
+            "field": "input_invalid:_[PARAMETER_NAME]",
+            "description": "<p>Input for that parameter <code>[PARAMETER_NAME]</code> is invalid or does not match the requirements</p>"
           }
         ]
       },
@@ -1137,6 +1177,11 @@ define({ "api": [
       }
     },
     "version": "1.0.0",
+    "permission": [
+      {
+        "name": "permission.groups.edit"
+      }
+    ],
     "filename": "api/src/endpoints/v1/groupEndpoint.php",
     "groupTitle": "Group",
     "success": {
@@ -1219,8 +1264,8 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "input_invalid:_[...]",
-            "description": "<p>Input for that parameter is invalid or does not match the requirements</p>"
+            "field": "input_invalid:_[PARAMETER_NAME]",
+            "description": "<p>Input for that parameter <code>[PARAMETER_NAME]</code> is invalid or does not match the requirements</p>"
           }
         ]
       },
@@ -1232,6 +1277,147 @@ define({ "api": [
         }
       ]
     }
+  },
+  {
+    "type": "post",
+    "url": "/upload/video/",
+    "title": "Upload video",
+    "description": "<p>Uploads a new video file</p>",
+    "group": "Upload",
+    "name": "Upload_video",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "File",
+            "optional": false,
+            "field": "file",
+            "description": "<p>The file to upload (8GB max).</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>UUID of the uploaded video on success.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "too_large",
+            "description": "<p>The provided file is to large.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "not_uploaded",
+            "description": "<p>An error occured when saving file.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "unsupported_encoding",
+            "description": "<p>The provided file has an invalid format or encoding.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "database_unavailable",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "missing_required_params",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_access_token",
+            "description": "<p>No access token provided or expired.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authentication_required",
+            "description": "<p>Authorization is required to access endpoint.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authorization_header_required",
+            "description": "<p>Authorization is required to access endpoint but no header was sent.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_endpoint",
+            "description": "<p>This endpoint does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_api_version",
+            "description": "<p>The requested version does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "unrecognized_action",
+            "description": "<p>The action for an endpoint is not supported.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "no_permission",
+            "description": "<p>Not enough permission to access endpoint</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "input_invalid:_[PARAMETER_NAME]",
+            "description": "<p>Input for that parameter <code>[PARAMETER_NAME]</code> is invalid or does not match the requirements</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n    \"status\": {\n        \"code\": 400,\n        \"message\": \"...\"\n    },\n    \"data\": []\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>User's unique access-token (Bearer).</p>"
+          }
+        ]
+      }
+    },
+    "version": "1.0.0",
+    "filename": "api/src/endpoints/v1/uploadEndpoint.php",
+    "groupTitle": "Upload"
   },
   {
     "type": "post",
@@ -1344,8 +1530,8 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "input_invalid:_[...]",
-            "description": "<p>Input for that parameter is invalid or does not match the requirements</p>"
+            "field": "input_invalid:_[PARAMETER_NAME]",
+            "description": "<p>Input for that parameter <code>[PARAMETER_NAME]</code> is invalid or does not match the requirements</p>"
           }
         ]
       },
@@ -1371,6 +1557,11 @@ define({ "api": [
       }
     },
     "version": "1.0.0",
+    "permission": [
+      {
+        "name": "permission.users.create"
+      }
+    ],
     "filename": "api/src/endpoints/v1/userEndpoint.php",
     "groupTitle": "User",
     "success": {
@@ -1385,7 +1576,7 @@ define({ "api": [
   },
   {
     "type": "delete",
-    "url": "/user",
+    "url": "/user/:id",
     "title": "Delete user",
     "description": "<p>Delete a user matching the given id</p>",
     "group": "User",
@@ -1475,8 +1666,8 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "input_invalid:_[...]",
-            "description": "<p>Input for that parameter is invalid or does not match the requirements</p>"
+            "field": "input_invalid:_[PARAMETER_NAME]",
+            "description": "<p>Input for that parameter <code>[PARAMETER_NAME]</code> is invalid or does not match the requirements</p>"
           }
         ]
       },
@@ -1502,6 +1693,11 @@ define({ "api": [
       }
     },
     "version": "1.0.0",
+    "permission": [
+      {
+        "name": "permission.users.delete"
+      }
+    ],
     "filename": "api/src/endpoints/v1/userEndpoint.php",
     "groupTitle": "User",
     "success": {
@@ -1607,8 +1803,8 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "input_invalid:_[...]",
-            "description": "<p>Input for that parameter is invalid or does not match the requirements</p>"
+            "field": "input_invalid:_[PARAMETER_NAME]",
+            "description": "<p>Input for that parameter <code>[PARAMETER_NAME]</code> is invalid or does not match the requirements</p>"
           }
         ]
       },
@@ -1634,6 +1830,11 @@ define({ "api": [
       }
     },
     "version": "1.0.0",
+    "permission": [
+      {
+        "name": "permission.users"
+      }
+    ],
     "filename": "api/src/endpoints/v1/userEndpoint.php",
     "groupTitle": "User"
   },
@@ -1758,8 +1959,8 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "input_invalid:_[...]",
-            "description": "<p>Input for that parameter is invalid or does not match the requirements</p>"
+            "field": "input_invalid:_[PARAMETER_NAME]",
+            "description": "<p>Input for that parameter <code>[PARAMETER_NAME]</code> is invalid or does not match the requirements</p>"
           }
         ]
       },
@@ -1922,8 +2123,8 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "input_invalid:_[...]",
-            "description": "<p>Input for that parameter is invalid or does not match the requirements</p>"
+            "field": "input_invalid:_[PARAMETER_NAME]",
+            "description": "<p>Input for that parameter <code>[PARAMETER_NAME]</code> is invalid or does not match the requirements</p>"
           }
         ]
       },
@@ -1949,6 +2150,11 @@ define({ "api": [
       }
     },
     "version": "1.0.0",
+    "permission": [
+      {
+        "name": "permission.users"
+      }
+    ],
     "filename": "api/src/endpoints/v1/userEndpoint.php",
     "groupTitle": "User"
   },
@@ -2064,8 +2270,8 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "input_invalid:_[...]",
-            "description": "<p>Input for that parameter is invalid or does not match the requirements</p>"
+            "field": "input_invalid:_[PARAMETER_NAME]",
+            "description": "<p>Input for that parameter <code>[PARAMETER_NAME]</code> is invalid or does not match the requirements</p>"
           }
         ]
       },
@@ -2091,6 +2297,11 @@ define({ "api": [
       }
     },
     "version": "1.0.0",
+    "permission": [
+      {
+        "name": "permission.users.edit"
+      }
+    ],
     "filename": "api/src/endpoints/v1/userEndpoint.php",
     "groupTitle": "User",
     "success": {
