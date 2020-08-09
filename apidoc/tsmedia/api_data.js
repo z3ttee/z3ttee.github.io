@@ -6,6 +6,97 @@ define({ "api": [
     "description": "<p>Logs an user in to receive an access token.</p>",
     "group": "Authentication",
     "name": "Login",
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "wrong_credentials",
+            "description": "<p>Password does not match with given username.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "could_not_create_access_token",
+            "description": "<p>Failed creating access token.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "could_not_create_session",
+            "description": "<p>Failed creating the session.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "database_unavailable",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "missing_required_params",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_access_token",
+            "description": "<p>No access token provided or expired.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authentication_required",
+            "description": "<p>Authorization is required to access endpoint.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authorization_header_required",
+            "description": "<p>Authorization is required to access endpoint but no header was sent.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_endpoint",
+            "description": "<p>This endpoint does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_api_version",
+            "description": "<p>The requested version does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "unrecognized_action",
+            "description": "<p>The action for an endpoint is not supported.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "no_permission",
+            "description": "<p>Not enough permission to access endpoint</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "input_invalid:_[PARAMETER_NAME]",
+            "description": "<p>Input for that parameter <code>[PARAMETER_NAME]</code> is invalid or does not match the requirements</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n    \"status\": {\n        \"code\": 400,\n        \"message\": \"...\"\n    },\n    \"data\": []\n}",
+          "type": "json"
+        }
+      ]
+    },
     "parameter": {
       "fields": {
         "Parameter": [
@@ -83,10 +174,24 @@ define({ "api": [
     },
     "version": "1.0.0",
     "filename": "api/src/endpoints/v1/authEndpoint.php",
-    "groupTitle": "Authentication",
+    "groupTitle": "Authentication"
+  },
+  {
+    "type": "get",
+    "url": "/auth/refresh/?session_hash=...",
+    "title": "Login with session",
+    "description": "<p>Logs an user in using its session hash.</p>",
+    "group": "Authentication",
+    "name": "Login_with_session",
     "error": {
       "fields": {
         "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "session_expired",
+            "description": "<p>The given session hash has expired.</p>"
+          },
           {
             "group": "Error 4xx",
             "optional": false,
@@ -156,15 +261,7 @@ define({ "api": [
           "type": "json"
         }
       ]
-    }
-  },
-  {
-    "type": "get",
-    "url": "/auth/refresh",
-    "title": "Login with session",
-    "description": "<p>Logs an user in using its session hash.</p>",
-    "group": "Authentication",
-    "name": "Login_with_session",
+    },
     "parameter": {
       "fields": {
         "Parameter": [
@@ -235,80 +332,7 @@ define({ "api": [
     },
     "version": "1.0.0",
     "filename": "api/src/endpoints/v1/authEndpoint.php",
-    "groupTitle": "Authentication",
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "database_unavailable",
-            "description": "<p>Cannot connect to database to retrieve data.</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "missing_required_params",
-            "description": "<p>Cannot connect to database to retrieve data.</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "invalid_access_token",
-            "description": "<p>No access token provided or expired.</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "authentication_required",
-            "description": "<p>Authorization is required to access endpoint.</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "authorization_header_required",
-            "description": "<p>Authorization is required to access endpoint but no header was sent.</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "invalid_endpoint",
-            "description": "<p>This endpoint does not exist</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "invalid_api_version",
-            "description": "<p>The requested version does not exist</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "unrecognized_action",
-            "description": "<p>The action for an endpoint is not supported.</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "no_permission",
-            "description": "<p>Not enough permission to access endpoint</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "input_invalid:_[PARAMETER_NAME]",
-            "description": "<p>Input for that parameter <code>[PARAMETER_NAME]</code> is invalid or does not match the requirements</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Error-Response:",
-          "content": "{\n    \"status\": {\n        \"code\": 400,\n        \"message\": \"...\"\n    },\n    \"data\": []\n}",
-          "type": "json"
-        }
-      ]
-    }
+    "groupTitle": "Authentication"
   },
   {
     "type": "get",
