@@ -312,7 +312,7 @@
   },
   {
     "type": "get",
-    "url": "/auth/?session_hash=...",
+    "url": "/auth/logout/?session_hash=...",
     "title": "Logout",
     "description": "<p>Logs an user out.</p>",
     "group": "Authentication",
@@ -717,11 +717,31 @@
   },
   {
     "type": "get",
-    "url": "/group/all",
+    "url": "/group/all/?offset=...&limit=...",
     "title": "Get all",
     "description": "<p>Requests all existing groups in database.</p>",
     "group": "Group",
     "name": "Get_all",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "offset",
+            "description": "<p>Starting index (Optional) Default: <code>0</code>.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "limit",
+            "description": "<p>Amount of items to retrieve (Optional) Default: <code>25</code>.</p>"
+          }
+        ]
+      }
+    },
     "success": {
       "fields": {
         "Success 200": [
@@ -1280,7 +1300,7 @@
   },
   {
     "type": "post",
-    "url": "/upload/video/",
+    "url": "/video/upload/(?url=...)",
     "title": "Upload video",
     "description": "<p>Uploads a new video file</p>",
     "group": "Upload",
@@ -1294,6 +1314,13 @@
             "optional": false,
             "field": "file",
             "description": "<p>The file to upload (8GB max).</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "url",
+            "description": "<p>An url pointing to a file to download.</p>"
           }
         ]
       }
@@ -1309,7 +1336,14 @@
             "description": "<p>UUID of the uploaded video on success.</p>"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"status\": {\n        \"code\": 200,\n        \"message\": \"OK\"\n    },\n    \"data\": {\n        \"id\": \"4073c027-1330-49aa-8fc7-966b66360230\"\n    }\n}",
+          "type": "json"
+        }
+      ]
     },
     "error": {
       "fields": {
@@ -1325,6 +1359,12 @@
             "optional": false,
             "field": "not_uploaded",
             "description": "<p>An error occured when saving file.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "video_exists",
+            "description": "<p>File with same size, duration, title and creator already exists</p>"
           },
           {
             "group": "Error 4xx",
@@ -1416,7 +1456,7 @@
       }
     },
     "version": "1.0.0",
-    "filename": "api/src/endpoints/v1/uploadEndpoint.php",
+    "filename": "api/src/endpoints/v1/videoEndpoint.php",
     "groupTitle": "Upload"
   },
   {
@@ -1434,14 +1474,21 @@
             "type": "String",
             "optional": false,
             "field": "name",
-            "description": "<p>Users name.</p>"
+            "description": "<p>User's name.</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "password",
-            "description": "<p>Users password.</p>"
+            "description": "<p>User's password.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "discordID",
+            "description": "<p>User's discordID (Optional).</p>"
           }
         ]
       }
@@ -1464,8 +1511,14 @@
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "name_already_exists",
+            "field": "name_exists",
             "description": "<p>The provided username does already exist.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "discordID_exists",
+            "description": "<p>The provided discordID does already exist.</p>"
           },
           {
             "group": "Error 4xx",
@@ -1712,11 +1765,31 @@
   },
   {
     "type": "get",
-    "url": "/user/all",
+    "url": "/user/all/?offset=...&limit=...",
     "title": "Get all",
     "description": "<p>Requests all existing users in database.</p>",
     "group": "User",
     "name": "Get_all",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "offset",
+            "description": "<p>Starting index (Optional) Default: <code>0</code>.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "limit",
+            "description": "<p>Amount of items to retrieve (Optional) Default: <code>25</code>.</p>"
+          }
+        ]
+      }
+    },
     "success": {
       "fields": {
         "Success 200": [
@@ -2188,6 +2261,20 @@
             "optional": false,
             "field": "group",
             "description": "<p>User's updated group (optional).</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<p>User's updated password (optional).</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "discordID",
+            "description": "<p>User's updated discordID (optional).</p>"
           }
         ]
       }
@@ -2304,6 +2391,568 @@
     ],
     "filename": "api/src/endpoints/v1/userEndpoint.php",
     "groupTitle": "User",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"status\": {\n        \"code\": 200,\n        \"message\": \"OK\"\n    },\n    \"data\": []\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
+    "url": "/video/:id/?offset=...&limit=...",
+    "title": "Get info",
+    "description": "<p>Get info about a video matching the given id</p>",
+    "group": "Video",
+    "name": "Get_info",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Video's id.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "offset",
+            "description": "<p>Starting index (Optional) Default: <code>0</code>.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "limit",
+            "description": "<p>Amount of items to retrieve (Optional) Default: <code>25</code>.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "not_found",
+            "description": "<p>No video were found.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "database_unavailable",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "missing_required_params",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_access_token",
+            "description": "<p>No access token provided or expired.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authentication_required",
+            "description": "<p>Authorization is required to access endpoint.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authorization_header_required",
+            "description": "<p>Authorization is required to access endpoint but no header was sent.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_endpoint",
+            "description": "<p>This endpoint does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_api_version",
+            "description": "<p>The requested version does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "unrecognized_action",
+            "description": "<p>The action for an endpoint is not supported.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "no_permission",
+            "description": "<p>Not enough permission to access endpoint</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "input_invalid:_[PARAMETER_NAME]",
+            "description": "<p>Input for that parameter <code>[PARAMETER_NAME]</code> is invalid or does not match the requirements</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n    \"status\": {\n        \"code\": 400,\n        \"message\": \"...\"\n    },\n    \"data\": []\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>User's unique access-token (Bearer).</p>"
+          }
+        ]
+      }
+    },
+    "version": "1.0.0",
+    "permission": [
+      {
+        "name": "permission.users.edit"
+      }
+    ],
+    "filename": "api/src/endpoints/v1/videoEndpoint.php",
+    "groupTitle": "Video",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"status\": {\n        \"code\": 200,\n        \"message\": \"OK\"\n    },\n    \"data\": []\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
+    "url": "/video/latest/",
+    "title": "Get latest",
+    "description": "<p>Returns the latest 10 videos</p>",
+    "group": "Video",
+    "name": "Get_latest",
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "not_found",
+            "description": "<p>No videos were found.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "database_unavailable",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "missing_required_params",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_access_token",
+            "description": "<p>No access token provided or expired.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authentication_required",
+            "description": "<p>Authorization is required to access endpoint.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authorization_header_required",
+            "description": "<p>Authorization is required to access endpoint but no header was sent.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_endpoint",
+            "description": "<p>This endpoint does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_api_version",
+            "description": "<p>The requested version does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "unrecognized_action",
+            "description": "<p>The action for an endpoint is not supported.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "no_permission",
+            "description": "<p>Not enough permission to access endpoint</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "input_invalid:_[PARAMETER_NAME]",
+            "description": "<p>Input for that parameter <code>[PARAMETER_NAME]</code> is invalid or does not match the requirements</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n    \"status\": {\n        \"code\": 400,\n        \"message\": \"...\"\n    },\n    \"data\": []\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>User's unique access-token (Bearer).</p>"
+          }
+        ]
+      }
+    },
+    "version": "1.0.0",
+    "filename": "api/src/endpoints/v1/videoEndpoint.php",
+    "groupTitle": "Video",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"status\": {\n        \"code\": 200,\n        \"message\": \"OK\"\n    },\n    \"data\": []\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
+    "url": "/video/watch/:id",
+    "title": "Get resource",
+    "description": "<p>Requests the binary data for the resource</p>",
+    "group": "Video",
+    "name": "Get_resource",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Video's id.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "not_found",
+            "description": "<p>The video was not found.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "no_resource",
+            "description": "<p>The video was not found on known path.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "database_unavailable",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "missing_required_params",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_access_token",
+            "description": "<p>No access token provided or expired.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authentication_required",
+            "description": "<p>Authorization is required to access endpoint.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authorization_header_required",
+            "description": "<p>Authorization is required to access endpoint but no header was sent.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_endpoint",
+            "description": "<p>This endpoint does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_api_version",
+            "description": "<p>The requested version does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "unrecognized_action",
+            "description": "<p>The action for an endpoint is not supported.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "no_permission",
+            "description": "<p>Not enough permission to access endpoint</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "input_invalid:_[PARAMETER_NAME]",
+            "description": "<p>Input for that parameter <code>[PARAMETER_NAME]</code> is invalid or does not match the requirements</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n    \"status\": {\n        \"code\": 400,\n        \"message\": \"...\"\n    },\n    \"data\": []\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>User's unique access-token (Bearer).</p>"
+          }
+        ]
+      }
+    },
+    "version": "1.0.0",
+    "permission": [
+      {
+        "name": "permission.users.edit"
+      }
+    ],
+    "filename": "api/src/endpoints/v1/videoEndpoint.php",
+    "groupTitle": "Video",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"status\": {\n        \"code\": 200,\n        \"message\": \"OK\"\n    },\n    \"data\": []\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "put",
+    "url": "/video/:id",
+    "title": "Update info",
+    "description": "<p>Update a video matching the given id</p>",
+    "group": "Video",
+    "name": "Update_info",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Video's id.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "title",
+            "description": "<p>Video's updated title (optional).</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "description",
+            "description": "<p>Video's updated description (optional).</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "visibility",
+            "description": "<p>Video's updated visibility (optional) <code>[0 = processing; 1 = private; 2 = not listed; 3 = public]</code>.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "category",
+            "description": "<p>Video's updated category (optional).</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "not_found",
+            "description": "<p>The user was not found.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "nothing_to_update",
+            "description": "<p>No parameters were specified to update.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "not_updated",
+            "description": "<p>The user was not updated because of a database error.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "database_unavailable",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "missing_required_params",
+            "description": "<p>Cannot connect to database to retrieve data.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_access_token",
+            "description": "<p>No access token provided or expired.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authentication_required",
+            "description": "<p>Authorization is required to access endpoint.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "authorization_header_required",
+            "description": "<p>Authorization is required to access endpoint but no header was sent.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_endpoint",
+            "description": "<p>This endpoint does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalid_api_version",
+            "description": "<p>The requested version does not exist</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "unrecognized_action",
+            "description": "<p>The action for an endpoint is not supported.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "no_permission",
+            "description": "<p>Not enough permission to access endpoint</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "input_invalid:_[PARAMETER_NAME]",
+            "description": "<p>Input for that parameter <code>[PARAMETER_NAME]</code> is invalid or does not match the requirements</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n    \"status\": {\n        \"code\": 400,\n        \"message\": \"...\"\n    },\n    \"data\": []\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>User's unique access-token (Bearer).</p>"
+          }
+        ]
+      }
+    },
+    "version": "1.0.0",
+    "permission": [
+      {
+        "name": "permission.users.edit"
+      }
+    ],
+    "filename": "api/src/endpoints/v1/videoEndpoint.php",
+    "groupTitle": "Video",
     "success": {
       "examples": [
         {
